@@ -15,8 +15,13 @@ const handleMessagePsyGPT = async (message: Message, prompt: string) => {
 
 		cli.print(`[PsyGPT] Received prompt from ${message.from}: ${prompt}`);
 
+        let content = {
+			"user": message.from,
+            "info": prompt,
+	    }	
+
 		let response: string;
-		response = await psyGPTRequest(opt);
+		response = await psyGPTRequest(content);
 
 		cli.print(`[PsyGPT] Answer to ${message.from}: ${response}`);
 

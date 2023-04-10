@@ -11,6 +11,7 @@ import * as cli from "../cli/ui";
 import { handleMessageGPT, handleDeleteConversation } from "../handlers/gpt";
 import { handleMessageDALLE } from "../handlers/dalle";
 import { handleMessageLLM, handleMessageLLMSummary, handleMessageLLMDocs } from "../handlers/llm";
+import { handleMessagePsyGPT } from "../handlers/psy_gpt";
 import { handleMessageAIConfig } from "../handlers/ai-config";
 
 // Speech API & Whisper
@@ -137,6 +138,10 @@ async function handleIncomingMessage(message: Message) {
 		else if (startsWithIgnoreCase(messageString, config.summaryPrefix)) {
 			const prompt = messageString.substring(config.summaryPrefix.length + 1);
 			await handleMessageLLMSummary(message, prompt);
+			return;
+		} else if (startsWithIgnoreCase(messageString, config.psyGPTPrefix)) {
+			const prompt = messageString.substring(config.psyGPTPrefix.length + 1);
+			await handleMessagePsyGPT(message, prompt);
 			return;
 		} else {
 			// LLM form docs

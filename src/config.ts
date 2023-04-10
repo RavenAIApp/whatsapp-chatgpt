@@ -18,6 +18,7 @@ interface IConfig {
 	dallePrefix: string;
 	llmPrefix: string;
 	summaryPrefix: string;
+	psyGPTPrefix: string;
 	resetPrefix: string;
 	aiConfigPrefix: string;
 
@@ -40,12 +41,13 @@ const config: IConfig = {
 	dallePrefix: process.env.DALLE_PREFIX || "Paint", // Default: Paint
 	llmPrefix: process.env.LLM_PREFIX || "MIND", // Default: LLM
 	summaryPrefix: process.env.SUMMARY_PREFIX || "SUMMARY", // Default: SUMMARY
+	psyGPTPrefix: process.env.PSY_GPT_PREFIX || "PSY", // Default: SUMMARY
 	resetPrefix: process.env.RESET_PREFIX || "!reset", // Default: !reset
 	aiConfigPrefix: process.env.AI_CONFIG_PREFIX || "!config", // Default: !config
 
 	// Speech API, Default: https://speech-service.verlekar.com
 	speechServerUrl: process.env.SPEECH_API_URL || "https://speech-service.verlekar.com",
-	psyGPTServerUrl: process.env.PSYGPT_API_URL || "https://127.0.0.1:9090",
+	psyGPTServerUrl: process.env.PSYGPT_API_URL || "http://127.0.0.1:9090",
 
 	// Text-to-Speech
 	ttsEnabled: getEnvBooleanWithDefault("TTS_ENABLED", false), // Default: false
