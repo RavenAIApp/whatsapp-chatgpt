@@ -9,7 +9,7 @@ async function psyGPTRequest(text: any): Promise<String | null> {
 
     console.log(text);
 
-	const url = config.psyGPTServerUrl + "/psy";
+	const url = config.psyGPTServerUrl + "/psy/gpt";
 
 	// Request options
 	const options = {
